@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menutest.mapper.FilmInfoMapper">
+
+    <select id="selAll" resultType="FilmInfo">
+
+        SELECT * FROM filminfo
+    </select>
+    
+    <insert id="insFilmInfo" parameterType="FilmInfo">
+
+        INSERT INTO filminfo(typeID,filmName,actor,director,ticketPrice)
+        VALUES (#{typeID},#{filmName},#{actor},#{director},#{ticketPrice})
+    </insert>
+    
+  <!--  <update id="updFilmInfo">
+
+        UPDATE filminfo
+        <set>
+
+              /*set 标签自动给你  去掉最后的 逗号*/
+            <if test="filmName !=null">
+
+                filmName=#{filmName},
+
+            </if>
+            <if test="typeID!=null">
+
+                typeID=#{typeID},
+            </if>
+
+        </set>
+    </update>-->
+    
+    
+    <resultMap id="filminfomap" type="FilmInfo">
+
+        <result property="typeID" column="typeID"></result>
+
+        <association property="filmType" column="typeID" select="menutest.mapper.FilmTypeMapper.selByTypeID"></association>
+
+    </resultMap>
+    
+    <select id="selByFilmInfo" parameterType="FilmInfo" resultMap="filminfomap">
+
+        SELECT * FROM filminfo
+        <where>
+
+            <if test="filmName!=null and filmName!=''">
+
+                and filmName=#{filmName}
+            </if>
+
+            <if test="actor!=null ">
+
+                AND actor=#{actor}
+            </if>
+
+            <if test="director!=null">
+
+                AND director=#{director}
+            </if>
+
+            <if test="ticketPrice !=null ">
+
+                AND  #{ticketPrice}>=ticketPrice
+            </if>
+            
+        </where>
+
+    </select>
+
+
+</mapper>

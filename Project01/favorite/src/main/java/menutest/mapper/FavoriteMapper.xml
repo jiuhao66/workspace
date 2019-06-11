@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menutest.mapper.FavoriteMapper">
+    
+    <resultMap id="favoritemap" type="Favorite">
+        <id property="fid" column="f_id"></id>
+
+        <result property="fLabel" column="f_label"></result>
+
+        <result property="fUrl" column="f_url"></result>
+
+        <result property="fDesc" column="f_desc"></result>
+
+        <result property="fTags" column="f_tags"></result>
+
+    </resultMap>
+
+    <select id="selAll" resultMap="favoritemap">
+
+        SELECT * FROM favorite
+    </select>
+    
+    <insert id="insNew" parameterType="Favorite">
+
+        INSERT INTO favorite VALUES(#{fid},#{fLabel},#{fUrl},#{fTags},#{fDesc})
+    </insert>
+
+    <select id="selByTag" parameterType="String" resultMap="favoritemap"   >
+
+        SELECT * FROM favorite WHERE  f_tags LIKE "%"#{tags}"%"
+
+    </select>
+
+</mapper>

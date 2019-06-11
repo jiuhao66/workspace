@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/enrypt_heima" />
+    <file type="web" url="file://$PROJECT_DIR$/favorite" />
+    <file type="web" url="file://$PROJECT_DIR$/interveiw" />
+    <file type="web" url="file://$PROJECT_DIR$/lunece" />
+    <file type="web" url="file://$PROJECT_DIR$/MybatisDemo" />
+    <file type="web" url="file://$PROJECT_DIR$/mybatismaven" />
+    <file type="web" url="file://$PROJECT_DIR$/mybatisyc" />
+    <file type="web" url="file://$PROJECT_DIR$/noval" />
+    <file type="web" url="file://$PROJECT_DIR$/solr_es" />
+    <file type="web" url="file://$PROJECT_DIR$/spring_annotation" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC" />
+    <file type="web" url="file://$PROJECT_DIR$/springwithSXT" />
+    <file type="web" url="file://$PROJECT_DIR$/ssm" />
+    <file type="web" url="file://$PROJECT_DIR$/ycmaven" />
+    <file type="web" url="file://$PROJECT_DIR$/ycmybatistest" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/mymaven/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatiswemaven/pom.xml" />
+        <option value="$PROJECT_DIR$/ycmybatistest/pom.xml" />
+        <option value="$PROJECT_DIR$/favorite/pom.xml" />
+        <option value="$PROJECT_DIR$/interveiw/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm/pom.xml" />
+        <option value="$PROJECT_DIR$/enrypt_heima/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/springwithSXT/pom.xml" />
+        <option value="$PROJECT_DIR$/lunece/pom.xml" />
+        <option value="$PROJECT_DIR$/solr_es/pom.xml" />
+        <option value="$PROJECT_DIR$/naval/pom.xml" />
+        <option value="$PROJECT_DIR$/MybatisDemo/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://java.sun.com/jsp/jstl/core" location="D:/jakarta-taglibs-standard-1.1.2/tld/c.tld" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SuppressABINotification">
+    <option name="modulesWithSuppressedNotConfigured">
+      <set>
+        <option value="mybatiswemaven" />
+      </set>
+    </option>
+  </component>
+</project>

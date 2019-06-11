@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="dateSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatistest"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="a"></property>
+    </bean>
+
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dateSource"></property>
+        <property name="typeAliasesPackage" value="menutest.Bean_annotation.pojo"></property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+                                       <!--包名-->
+        <property name="basePackage" value="menutest.mapper"></property>
+        <property name="sqlSessionFactory" ref="factory"></property>
+    </bean>
+
+    <bean id="user" class="menutest.pojo.User"></bean>
+    <bean id="loginAfterAdvice" class="login_Test.advice.loginAfterAdvice"></bean>
+    <bean id="loginBeforeAdvice" class="login_Test.advice.loginBeforeAdvice"></bean>
+
+    <bean id="userService" class="menutest.service.impl.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"></property>
+    </bean>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+
+    <aop:config>
+        <aop:pointcut id="loginPoint" expression="execution(* menutest.service.impl.UserServiceImpl.login(..))"></aop:pointcut>
+        <aop:advisor advice-ref="loginBeforeAdvice" pointcut-ref="loginPoint"></aop:advisor>
+        <aop:advisor advice-ref="loginAfterAdvice" pointcut-ref="loginPoint"></aop:advisor>
+    </aop:config>
+
+</beans>

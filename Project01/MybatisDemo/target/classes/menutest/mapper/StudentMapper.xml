@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menutest.mapper.StudentMapper">
+
+    <!--<resultMap id="tid" type="Teacher">
+
+        <id column="sid" property="sid"></id>
+
+        &lt;!&ndash;多表查询时  查询结果单个对象    select 里面放的是  menutest.mapper 里面的 方法 &ndash;&gt;
+        <association property="a" select=" "></association>
+
+        &lt;!&ndash;多表查询时  查询结果为一个集合对象&ndash;&gt;
+        <collection property="a" column=" a"></collection>
+    </resultMap>
+
+    <select id="menutest.mapper.StudentMapper" resultMap="tid">
+        SELECT * FROM student
+    </select>-->
+    <resultMap id="selByidMap" type="Student">
+
+        <id property="sid" column="sid"></id>
+
+        <result property="name" column="name"></result>
+        
+        <association property="teacher" javaType="Teacher" column="tid" select="menutest.mapper.TeacherMapper.selByTid"></association>
+
+    </resultMap>
+    
+    <select id="selByid" resultMap="selByidMap" >
+
+        SELECT * FROM student WHERE sid = #{id}
+
+    </select>
+
+    <select id="selBytid" resultType="Student" >
+
+        SELECT * FROM student where tid = #{tid}
+
+
+    </select>
+
+</mapper>

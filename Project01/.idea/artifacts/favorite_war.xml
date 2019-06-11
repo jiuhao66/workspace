@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="favorite:war">
+    <output-path>$PROJECT_DIR$/favorite/target</output-path>
+    <root id="archive" name="favorite.war">
+      <element id="artifact" artifact-name="favorite:war exploded" />
+    </root>
+  </artifact>
+</component>

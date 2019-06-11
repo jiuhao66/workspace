@@ -1,0 +1,20 @@
+
+
+#   yaml 是用文档块 来进行profiles的配置
+#  spring: profiles:  active: dev   激活环境
+server:
+  port: 80
+spring:
+  profiles:
+    active: dev
+---
+
+server:
+  port:90
+spring:
+  profiles: prod
+---
+server:
+  port: 100
+spring:
+  profiles: dev

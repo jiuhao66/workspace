@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menutest.mapper.Test">
+    <resultMap id="a" type="TestBank">
+
+        <id column="id" property="id1" ></id>
+        <result column="name" property="name1"></result>
+        <result property="pwd1" column="pwd"></result>
+        <result column="balance" property="balance1"></result>
+
+    </resultMap>
+    
+    <select id="selAll" resultMap="a">
+        SELECT * FROM bank
+    </select>
+
+</mapper>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="springwithSXT:war">
+    <output-path>$PROJECT_DIR$/springwithSXT/target</output-path>
+    <root id="archive" name="springwithSXT.war">
+      <element id="artifact" artifact-name="springwithSXT:war exploded" />
+    </root>
+  </artifact>
+</component>

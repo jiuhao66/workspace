@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ycmybatistest:war">
+    <output-path>$PROJECT_DIR$/ycmybatistest/target</output-path>
+    <root id="archive" name="ycmybatistest.war">
+      <element id="artifact" artifact-name="ycmybatistest:war exploded" />
+    </root>
+  </artifact>
+</component>

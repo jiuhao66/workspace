@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="demo" class="aopTest.apectj.Demo" ></bean>
+
+    <bean id="myAdvice" class="aopTest.apectj.advice.MyAdvice" ></bean>
+
+    <aop:config>
+        <aop:pointcut id="demo1" expression="execution(* aopTest.apectj.Demo.demo1())"></aop:pointcut>
+
+        <aop:pointcut id="demo2" expression="execution(* aopTest.apectj.Demo.demo2())"></aop:pointcut>
+
+        <aop:pointcut id="demo3" expression="execution(* aopTest.apectj.Demo.demo3(int,String)) and args(number,name)"></aop:pointcut>
+        <aop:aspect ref="myAdvice">
+
+            <aop:before method="beforeAdvice" pointcut-ref="demo1"></aop:before>
+
+            <!--after 就算出现异常也会执行  return 不会-->
+            <aop:after method="afterAdvice" pointcut-ref="demo1"></aop:after>
+
+            <aop:after-returning method="afterAdvice" pointcut-ref="demo1"></aop:after-returning>
+
+            <aop:after-throwing method="throwAdvice" pointcut-ref="demo2"></aop:after-throwing>
+
+            <aop:before method="beforeAdvice3" pointcut-ref="demo3" arg-names="number,name"></aop:before>
+
+            <!--环绕通知   -->
+           <!-- <aop:around method="arroundAdvice" pointcut-ref="demo1"></aop:around>-->
+
+    </aop:aspect>
+    </aop:config>
+</beans>

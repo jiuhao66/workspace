@@ -1,0 +1,33 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.yc.bean.Person",
+      "name": "person",
+      "type": "com.yc.bean.Person"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.yc.bean.Person",
+      "defaultValue": 0,
+      "name": "person.age",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.yc.bean.Person",
+      "name": "person.list",
+      "type": "java.util.List<java.lang.Object>"
+    },
+    {
+      "sourceType": "com.yc.bean.Person",
+      "name": "person.map",
+      "type": "java.util.Map<java.lang.String,java.lang.Object>"
+    },
+    {
+      "sourceType": "com.yc.bean.Person",
+      "name": "person.name",
+      "type": "java.lang.String"
+    }
+  ]
+}

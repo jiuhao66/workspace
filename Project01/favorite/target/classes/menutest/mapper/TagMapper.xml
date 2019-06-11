@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="menutest.mapper.TagMapper">
+
+    <resultMap id="tagmap" type="Tag">
+
+        <id property="tid" column="t_id"></id>
+        <result property="tName" column="t_name"></result>
+        <result property="tCount" column="t_count"></result>
+    </resultMap>
+
+    <select id="selAll" resultMap="tagmap">
+
+        SELECT * FROM tag
+    </select>
+    
+    <insert id="selNew" parameterType="Tag">
+
+        INSERT INTO tag VALUES(#{tid},#{tName},#{tCount})
+    </insert>
+    
+</mapper>

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    username: root
+    password: a
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/novel
+  jpa:
+    hibernate:
+#    更新或者创建 数据表结构
+#      ddl-auto: update
+#      控制台 显示Sql
+      show-sql: true

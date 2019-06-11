@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="solr_es:war exploded">
+    <output-path>$PROJECT_DIR$/solr_es/target/solr_es</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="solr_es" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-queryparser:4.10.4" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-queries:4.10.4" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-sandbox:4.10.4" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-analyzers-common:4.10.4" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-core:4.10.4" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.35" />
+          <element id="library" level="project" name="Maven: com.github.keran213539:IK_Analyzer:2012FF_hf1_1" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/solr_es/target/solr_es/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="solr_es/web/Web" />
+    </root>
+  </artifact>
+</component>

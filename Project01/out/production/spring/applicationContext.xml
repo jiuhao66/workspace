@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="teacher" class="Teacher" >
+
+        <!--添加 构造方法  在反射的时候 就用 这个指定的-->
+        <constructor-arg index="0" value="1" type="int" name="id" ></constructor-arg>
+        <constructor-arg index="1" name="name" type="java.lang.String" value="lixin"></constructor-arg>
+    </bean>
+
+    <!--实例工厂 构建 类  -->
+    <bean id="teacherFactory" class="test.util.TeacherFactory" ></bean>
+    <bean id="teacher1" factory-bean="teacherFactory" factory-method="newInstance"></bean>
+
+    <!--静态工厂 构建 类 -->
+    <bean id="teacherStaticFactory" class="test.util.TeacherStaticFactory" factory-method="newInstace"></bean>
+
+</beans>

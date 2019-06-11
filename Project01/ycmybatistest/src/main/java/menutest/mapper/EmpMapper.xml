@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menutest.mapper.EmpMapper">
+
+
+    <select id="selAll" resultType="menutest.pojo.Emp">
+        SELECT * FROM  emp
+    </select>
+
+    <select id="selOne" resultType="menutest.pojo.Emp">
+
+        SELECT * FROM  emp WHERE empno = #{id}
+    </select>
+    
+    <select id="selInEmpno" resultType="menutest.pojo.Emp">
+
+
+        SELECT * FROM emp
+        <where>
+
+
+            <foreach collection="list" item="t" open="empno in (" separator="," close=")">
+                #{t}
+            </foreach>
+
+        </where>
+    </select>
+    
+    <insert id="insEmp" parameterType="menutest.pojo.Emp">
+
+        INSERT INTO emp VALUES (NULL ,#{ename},#{job},#{mgr},#{hiredate},#{sal},#{comm},
+        #{deptno},#{sex},#{hobby})
+    </insert>
+
+</mapper>

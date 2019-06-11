@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd" default-autowire="byName">
+
+    <!--                       需要加载多个文件的时候  用 逗号 分开 classpath:.....-->
+    <context:property-placeholder location="classpath:db.properties,classpath:db2.properties"></context:property-placeholder>
+    <bean id="dateSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+    <!--   注解扫描            要想  使用注解  必须 告诉spring   你使用注解在那个  包下-->
+    <context:component-scan base-package="menutest.service.impl"></context:component-scan>
+
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dateSource"></property>
+        <property name="typeAliasesPackage" value="menutest.pojo"></property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--包名-->
+        <property name="basePackage" value="menutest.mapper"></property>
+       <!-- <property name="sqlSessionFactory" ref="factory"></property>-->
+        <property name="sqlSessionFactoryBeanName" value="factory"></property>
+    </bean>
+
+    <!--    scope=prototype  多例  scope=singleton 单例   -->
+    <bean id="user" class="menutest.pojo.User" ></bean>
+    <bean id="loginAfterAdvice" class="login_Test.advice.loginAfterAdvice"></bean>
+    <bean id="loginBeforeAdvice" class="login_Test.advice.loginBeforeAdvice"></bean>
+
+    <bean id="userService" class="menutest.service.impl.UserServiceImpl">
+    </bean>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+
+    <aop:config>
+        <aop:pointcut id="loginPoint" expression="execution(* menutest.service.impl.UserServiceImpl.login(..))"></aop:pointcut>
+        <aop:advisor advice-ref="loginBeforeAdvice" pointcut-ref="loginPoint"></aop:advisor>
+        <aop:advisor advice-ref="loginAfterAdvice" pointcut-ref="loginPoint"></aop:advisor>
+    </aop:config>
+
+</beans>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="menutest.pojo.Student"></bean>
+
+    <bean id="teacher" class="menutest.pojo.Teacher">
+
+        <!--普通类型注入     -->
+        <property name="id">
+            <value>1</value>
+        </property>
+        <property name="name" value="lixin"></property>
+
+
+       <!--  <property name="list" value="1"> </property>  list里面只有一个的时候   -->
+
+        <property name="list">
+            <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+                <value>4</value>
+            </list>
+        </property>
+
+        <property name="map" >
+            <map>
+                <entry key="6" value="6"></entry>
+                <entry key="7" value="6"></entry>
+                <entry key="8" value="6"></entry>
+            </map>
+        </property>
+
+        <!--  di  依赖注入 -->
+        <property name="student" ref="student"></property>
+
+    </bean>
+
+
+
+</beans>

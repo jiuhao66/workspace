@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="enrypt_heima" />
+        <module name="favorite" />
+        <module name="interveiw" />
+        <module name="lunece" />
+        <module name="MybatisDemo" />
+        <module name="mybatiswemaven" />
+        <module name="mybatisyc" />
+        <module name="mybatisyctest" />
+        <module name="mymaven" />
+        <module name="solr_es" />
+        <module name="spring_annotation" />
+        <module name="springwithSXT" />
+        <module name="ssm" />
+        <module name="ycmybatistest" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="emrypt" target="1.5" />
+      <module name="Enrypt" target="1.5" />
+      <module name="enrypt" target="1.5" />
+      <module name="enrypt_heima" target="1.7" />
+      <module name="favorite" target="1.7" />
+      <module name="interveiw" target="1.7" />
+      <module name="JDK8_main" target="1.8" />
+      <module name="JDK8_test" target="1.8" />
+      <module name="lunece" target="1.7" />
+      <module name="MybatisDemo" target="1.7" />
+      <module name="mybatismaven" target="1.7" />
+      <module name="mybatiswemaven" target="1.7" />
+      <module name="mybatisyc" target="1.7" />
+      <module name="mybatisyctest" target="1.7" />
+      <module name="mymaven" target="1.7" />
+      <module name="naval" target="1.7" />
+      <module name="netty_main" target="1.8" />
+      <module name="netty_test" target="1.8" />
+      <module name="noval" target="1.5" />
+      <module name="solr_es" target="1.7" />
+      <module name="spring_annotation" target="1.7" />
+      <module name="spring_annotation_empolder" target="1.5" />
+      <module name="springMVC" target="1.7" />
+      <module name="springwithSXT" target="1.7" />
+      <module name="ssm" target="1.7" />
+      <module name="ycmaven" target="1.7" />
+      <module name="ycmybatistest" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

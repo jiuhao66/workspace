@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menutest.mapper.BankMapper">
+    <!--开启二级缓存-->
+    <!--<cache readOnly="true"></cache>-->
+
+    <select id="selAll" resultType="Map">
+        SELECT * FROM bank
+    </select>
+    <select id="selById" resultType="Bank">
+        SELECT * FROM bank WHERE id=#{id}
+    </select>
+    <select id="selByIdName" resultType="Bank">
+        SELECT * FROM bank
+        <where>
+            <if test="id!=null">
+                or id=#{id}
+            </if>
+            <if test="name!=null and name!=''">
+                /* 给name 重新赋值   一般用于蘑菇查询     */
+                <bind value="'%'+name+'%'" name="name"></bind>
+                or name=#{name}
+            </if>
+        </where>
+    </select>
+    <select id="selIn" parameterType="list" resultType="Bank" >
+        SELECT * FROM bank WHERE  id IN
+        <foreach collection="list" open="(" close=")" separator="," item="a">
+            #{a}
+        </foreach>
+    </select>
+
+
+
+   <!-- <update id="updBalanceByIdPwd" parameterType="Account">
+        UPDATE bank SET balance=balance - #{amount}  WHERE id=#{id} AND pwd=#{pwd}
+    </update>
+    <update id="updBalanceByIdName" parameterType="Account">
+        UPDATE bank SET balance=balance + #{amount}  WHERE id=#{id} AND   name =#{name}
+    </update>
+    <select id="selByIdPwd" parameterType="Account" resultType="Bank">
+        SELECT * FROM  bank WHERE id=#{id} AND pwd=#{pwd}
+    </select>
+    <select id="selByIdName" parameterType="Account" resultType="Bank">
+
+        SELECT * FROM  bank WHERE id=#{id} AND name=#{name}
+    </select>-->
+
+</mapper>

@@ -1,0 +1,32 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mymaven:war exploded">
+    <output-path>$PROJECT_DIR$/mymaven/target/mymaven</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ycmaven" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.4.6" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.38" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-catalina:8.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-servlet-api:8.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jsp-api:8.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-el-api:8.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:8.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-annotations-api:8.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-api:8.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jni:8.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-coyote:8.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-util:8.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-util-scan:8.0.32" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/ycmaven/target/mymaven/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="ycmaven/web/Web" />
+    </root>
+  </artifact>
+</component>

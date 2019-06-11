@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="interveiw:war">
+    <output-path>$PROJECT_DIR$/interveiw/target</output-path>
+    <root id="archive" name="interveiw.war">
+      <element id="artifact" artifact-name="interveiw:war exploded" />
+    </root>
+  </artifact>
+</component>

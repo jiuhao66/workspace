@@ -1,0 +1,83 @@
+group 'com.yc'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'com.google.protobuf'
+
+
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.0'
+  }
+}
+
+protobuf {
+  protoc {
+    artifact = "com.google.protobuf:protoc:3.2.0"
+  }
+  plugins {
+    grpc {
+      artifact = 'io.grpc:protoc-gen-grpc-java:1.4.0'
+    }
+  }
+  generateProtoTasks {
+    all()*.plugins {
+      grpc {}
+    }
+  }
+}
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile group: 'org.springframework', name: 'spring-context', version: '4.3.12.RELEASE'
+
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.10.Final'
+
+    compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.5.1'
+
+    compile group: 'com.google.protobuf', name: 'protobuf-java-util', version: '3.5.1'
+
+    compile("org.apache.thrift:libthrift:0.12.0")
+
+    compile "io.grpc:grpc-netty:1.4.0"
+
+    compile "io.grpc:grpc-protobuf:1.4.0"
+
+    compile "io.grpc:grpc-stub:1.4.0"
+
+}
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.0'
+    }
+}
+
+
+/* 自定 proto 文件的位置    默认是扫描 src/main/proto    */
+/*sourceSets {
+
+    main{
+        proto{
+            srcDir 'src/main/proto'
+            srcDir 'src/main'
+        }
+        
+    }
+
+}*/

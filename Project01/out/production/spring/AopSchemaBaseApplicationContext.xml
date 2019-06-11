@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="demo" class="aopTest.schema_base.Demo" ></bean>
+    <bean id="afterAdvice" class="aopTest.schema_base.advice.AfterAdvice"></bean>
+    <bean id="beforeAdvice" class="aopTest.schema_base.advice.BeforeAdvice"></bean>
+    <bean id="throwAdvice" class="aopTest.schema_base.advice.ThrowAdvice"></bean>
+
+    <aop:config>
+
+        <!--  *表示通配符 -->
+       <aop:pointcut id="demopointcut" expression="execution(* aopTest.schema_base.Demo.demo1(..))"></aop:pointcut>
+
+        <aop:advisor advice-ref="afterAdvice" pointcut-ref="demopointcut"></aop:advisor>
+        
+        <aop:advisor advice-ref="beforeAdvice" pointcut-ref="demopointcut"></aop:advisor>
+
+        <aop:aspect ref="throwAdvice">
+
+            <aop:after-throwing method="myException" pointcut-ref="demopointcut"></aop:after-throwing>
+
+        </aop:aspect>
+
+    </aop:config>
+</beans>

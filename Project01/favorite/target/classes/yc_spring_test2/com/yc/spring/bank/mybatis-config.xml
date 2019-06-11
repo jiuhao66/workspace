@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 数据源(environment)配置 -->
+	<environments default="development"><!-- 指定当前的数据环境 -->
+		
+		<!-- 开发环境 -->
+		<environment id="development"><!-- 数据源的id（标识） -->
+			<transactionManager type="JDBC" /><!-- 事务配置 -->
+			<dataSource type="POOLED"><!-- Pooled 连接池 -->
+				<property name="driver" value="org.sqlite.JDBC" />
+				<property name="url" value="jdbc:sqlite:/dev/workspace/utils/db/yc.db" />
+				<property name="username" value="root" />
+				<property name="password" value="a" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 映射文件配置 -->
+	<mappers>
+		<package name="com.yc.spring.bank.dao"/>
+	</mappers>
+
+</configuration>

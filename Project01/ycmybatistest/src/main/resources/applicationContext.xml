@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="filmInfo" class="menutest.pojo.FilmInfo" scope="prototype"></bean>
+
+    <bean id="filmType" class="menutest.pojo.FilmType"></bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+
+        <property name="url" value="jdbc:mysql://localhost:3306/ycmybatis"></property>
+
+        <property name="username" value="root"></property>
+
+        <property name="password" value="a"></property>
+    </bean>
+
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="typeAliasesPackage" value="menutest.Bean_annotation.pojo"></property>
+    </bean>
+
+    <bean id="scannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+
+        <property name="basePackage" value="menutest.mapper"></property>
+        <property name="sqlSessionFactory" ref="factory"></property>
+    </bean>
+
+    <bean id="searchService" class="menutest.service.impl.SearchServiceImpl">
+        <property name="filmInfoMapper" ref="filmInfoMapper"></property>
+    </bean>
+
+</beans>

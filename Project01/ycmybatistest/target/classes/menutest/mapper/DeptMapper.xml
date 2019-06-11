@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menutest.mapper.DeptMapper">
+
+
+    <resultMap id="selAllMap" type="menutest.Bean_annotation.pojo.Dept">
+
+        <id property="deptno" column="deptno"></id>
+                            <!--fetchType="lazy"  延迟加载  懒惰加载  需要用的时候  才会去 查询  -->
+        <association property="emp" javaType="menutest.Bean_annotation.pojo.Emp" column="empno"
+                     select="menutest.mapper.EmpMapper.selOne" fetchType="lazy"></association>
+    </resultMap>
+
+    <select id="selAll" resultMap="selAllMap">
+
+        SELECT * FROM dept
+    </select>
+
+    <select id="selOne" resultType="menutest.Bean_annotation.pojo.Dept">
+        SELECT * FROM  dept WHERE deptno = #{id}
+    </select>
+    
+    <insert id="insBatch">
+
+        INSERT INTO dept(dname,loc) VALUES
+        <foreach collection="list" item="t" open="(" close=")" separator="),(">
+
+            #{t.dname},#{t.loc}
+        </foreach>
+
+    </insert>
+    
+    <insert id="insDept" parameterType="menutest.Bean_annotation.pojo.Dept" useGeneratedKeys="true" keyColumn="deptno" keyProperty="deptno">
+
+        INSERT INTO dept VALUES (NULL ,#{dname},#{loc},0)
+    </insert>
+
+</mapper>

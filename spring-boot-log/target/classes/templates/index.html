@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+       index.html
+<div th:text="${hello}"></div>
+<div th:utext="${hello}"></div>
+<hr>
+
+<!-- th:each  每次遍历都会 生成当前这个标签   3个h4-->
+<h4 th:text="${list}" th:each="list:${lists}"></h4>
+
+<h4>
+   <span th:each="list:${lists}">[[${list}]]</span>
+
+</h4>
+
+</body>
+</html>

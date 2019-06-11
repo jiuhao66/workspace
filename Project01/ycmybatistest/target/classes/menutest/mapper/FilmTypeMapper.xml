@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menutest.mapper.FilmTypeMapper">
+
+    <select id="selAll" resultType="FilmType">
+        SELECT * FROM filmtype
+    </select>
+    
+    <select id="selByName" resultType="FilmType">
+
+        SELECT * FROM filmtype WHERE typeName = #{typeName}
+    </select>
+    
+    <select id="selByTypeID" resultType="FilmType">
+
+        SELECT * FROM filmtype WHERE typeID=#{typeID}
+    </select>
+
+
+</mapper>

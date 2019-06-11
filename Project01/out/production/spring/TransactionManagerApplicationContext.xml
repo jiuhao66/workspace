@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd" default-autowire="byName">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatistest"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="a"></property>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--在此  说明  那些方法 需要被 事物控制 -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+
+        <!-- 那些 方法需要   事物控制 -->
+        <tx:attributes>
+            <!-- 此处支持通配符    ins*
+            表示  ins开头的方法 都被 事物控制-->
+            <!--  rollback-for="java.lang.Exception"  出现异常  事物回滚
+                    no-rollback-for=""   当出现 某些异常  不回滚
+                  -->
+            <tx:method name="insert"  />
+
+            <!--  这个表示 除了上面的以外  其他的  方法为只读   默认为false-->
+            <tx:method name="*" read-only="true"></tx:method>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+
+        <!--切点范围设置大一点 -->
+        <aop:pointcut id="mypoint" expression="execution(* transaction.service.impl.*.*(..))"></aop:pointcut>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="mypoint"></aop:advisor>
+    </aop:config>
+</beans>

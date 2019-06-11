@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+    <resultMap id="userMap" type="User" >
+        <!--主键 通过id 配置  映射关系-->
+        <id column="uid" property="uid"></id>
+        <result column="account" property="account1"></result>
+        <!--其他列通过 result标签来映射 关系-->
+    </resultMap>
+    <select id="selAll" resultMap="userMap" >
+        SELECT * FROM  user
+    </select>
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatistest"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="a"></property>
+    </bean>
+
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--   扫描器相当于 mybatis下 package 标签-->
+
+    <!-- 当它在扫描时  扫描到包里面的接口  会自动给你  反射   -->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+
+        <property name="basePackage" value="menutest.mapper"></property>
+        <property name="sqlSessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="teacherService" class="menutest.service.impl.TeacherServiceImpl">
+
+        <property name="teacherMapper" ref="teacherMapper"></property>
+    </bean>
+
+</beans>
