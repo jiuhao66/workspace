@@ -1,10 +1,12 @@
 package com.yc.cache.bean;
 
+import java.io.Serializable;
+
 /**
  * @author LX
  * @date 2019/6/11 - 12:04
  */
-public class Employee {
+public class Employee implements Serializable{
     private Integer id;
     private String lastName;
     private String email;

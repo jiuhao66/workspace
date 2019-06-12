@@ -17,7 +17,9 @@ public class MyFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         System.out.println("过滤器......");
-        chain.doFilter(request, response);
+//        chain.doFilter(request, response);
+        response.setContentType("text/html;charset=utf-8");
+        response.getWriter().write("过滤器.......");
     }
 
     @Override

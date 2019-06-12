@@ -9,4 +9,6 @@ import com.yc.cache.bean.Employee;
 public interface EmployeeService {
 
     Employee getEmployById(Integer id);
+
+    Employee updEmploy(Employee employee);
 }

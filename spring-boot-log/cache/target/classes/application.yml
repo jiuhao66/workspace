@@ -4,7 +4,9 @@ spring:
     password: a
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/spring_cache?useSSL=true
+  redis:
+    host: 47.106.110.16
+    password: li157922018
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-

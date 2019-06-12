@@ -30,13 +30,16 @@ public class MyServerConfig {
 
     @Bean
     public FilterRegistrationBean filterRegistrationBean(){
+
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
 
         filterRegistrationBean.setFilter(new MyFilter());
 
         filterRegistrationBean.setUrlPatterns(Arrays.asList("/myServlet","/index"));
+
         return filterRegistrationBean;
     }
+
     @Bean
     public ServletRegistrationBean servletRegistrationBean(){
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new MyServlet(),"/myServlet");
@@ -49,13 +52,6 @@ public class MyServerConfig {
     public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer(){
 
         //  定制 嵌入式的servlet 容器相关的规则
-        return new EmbeddedServletContainerCustomizer(){
-
-            @Override
-            public void customize(ConfigurableEmbeddedServletContainer container) {
-
-                container.setPort(80);
-            }
-        };
+        return (container)->{container.setPort(80);};
     }
 }

@@ -5,6 +5,7 @@ import com.yc.cache.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,6 +24,13 @@ public class EmployeeController {
         Employee employById = employeeService.getEmployById(id);
 
         return employById;
+    }
 
+    @RequestMapping("updEmp")
+    public Employee updEmploy(Employee employee){
+
+        Employee employee1 = employeeService.updEmploy(employee);
+
+        return employee1;
     }
 }
